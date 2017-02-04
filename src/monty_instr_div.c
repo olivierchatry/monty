@@ -5,11 +5,12 @@ void monty_instr_div(monty_t *monty) {
 		monty->error = MONTY_ERROR_TO_SHORT;
 	} else {
 		int v1 = monty_pop(monty);
-		int v2 = monty_pop(monty);
 		if (v1 == 0) {
 			monty->error = MONTY_ERROR_DIV_ZERO;
 		} else {
-			monty_push(monty, v2 / v1);
+			monty_value_t v;
+			v.value = monty_pop(monty) / v1;
+			dlist_push_head(&(monty->dlist), v.ptr);
 		}
 	}
 }
