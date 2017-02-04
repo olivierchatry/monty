@@ -25,7 +25,7 @@ void		dlist_apply_head_to_tail(dlist_t *dlist, dlist_fct_t fct) {
 }
 
 void		dlist_free(dlist_t *dlist) {
-	dlist_node_t	*node = dlist->tail;
+	dlist_node_t	*node = dlist->head;
 	while(node) {
 		dlist_node_t	*current = node;
 		node = node->next;
@@ -74,7 +74,6 @@ void		*dlist_pop_tail(dlist_t *dlist) {
 		dlist_node_t	*prev;
 
 		prev = dlist->tail->prev;
-		prev->next = NULL;
 		value = dlist->tail->value;
 		free(dlist->tail);
 		dlist->tail = prev;
@@ -82,6 +81,8 @@ void		*dlist_pop_tail(dlist_t *dlist) {
 	}
 	if (dlist->tail == NULL) {
 		dlist->head = NULL;
+	} else {
+		dlist->tail->next = NULL;
 	}
 	return value;
 }
@@ -95,11 +96,12 @@ void		*dlist_pop_head(dlist_t *dlist) {
 		value = dlist->head->value;
 		free(dlist->head);
 		dlist->head = next;
-		dlist->head->prev = NULL;
 		dlist->count--;
 	}
 	if (dlist->head == NULL) {
 		dlist->tail = NULL;
+	} else {
+		dlist->head->prev = NULL;
 	}
 	return value;
 }

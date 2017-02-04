@@ -1,7 +1,7 @@
 #include "monty.h"
 #include <stdio.h>
 
-int monty_error(monty_t* monty) {
+void monty_error(monty_t* monty) {
 	switch (monty->error) {
 		case MONTY_OK:
 			break;
@@ -31,5 +31,4 @@ int monty_error(monty_t* monty) {
 		default:
 			printf("L%d: unknow error\n", monty->line);
 	}
-	return monty->error != MONTY_OK;
 }

@@ -10,6 +10,7 @@ void monty_remove_comment(char* content) {
 
 int monty_parse(char* content) {
 	char		*save_ptr, *line;
+	int			status;
 	monty_t	monty;
 	
 	monty_init(&monty);
@@ -20,5 +21,8 @@ int monty_parse(char* content) {
 		monty_execute(&monty, line);
 		line = hstrtok_r(NULL, "\n", &save_ptr);
 	}
-	return monty_error(&monty) ? EXIT_FAILURE : EXIT_SUCCESS;
+	status = monty.error;
+	monty_error(&monty);
+	monty_free(&monty);
+	return status == MONTY_OK ? EXIT_SUCCESS : EXIT_FAILURE;
 }
