@@ -3,6 +3,17 @@
 #include "monty.h"
 #include "hlib/hlib.h"
 
+void monty_init(monty_t *monty) {
+	dlist_init(&monty->dlist);
+	monty->error = MONTY_OK;
+	monty->mode = MONTY_STACK; 
+	monty->line = 0;
+}
+
+void monty_free(monty_t *monty) {
+	dlist_free(&monty->dlist);
+}
+
 void monty_remove_comment(char* content) {
 	for (;*content && (*content != '#'); content++);
 	*content = 0;

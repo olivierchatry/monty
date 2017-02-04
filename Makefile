@@ -7,8 +7,6 @@ SRCS=src/main.c \
 	src/utils/util_read_file.c \
 	src/monty_error.c \
 	src/monty_execute.c \
-	src/monty_free.c \
-	src/monty_init.c \
 	src/monty_parse.c \
 	src/monty_pop.c \
 	src/instr/monty_instr_pall.c \
