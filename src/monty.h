@@ -64,7 +64,6 @@ void monty_instr_div(monty_t *monty);
 void monty_instr_mod(monty_t *monty);
 void monty_instr_pchar(monty_t *monty);
 void monty_instr_pstr(monty_t *monty);
-void monty_instr_pstr(monty_t *monty);
 void monty_instr_rotl(monty_t *monty);
 void monty_instr_rotr(monty_t *monty);
 void monty_instr_stack(monty_t *monty);
