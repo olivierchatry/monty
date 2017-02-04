@@ -3,8 +3,6 @@ TARGET=monty
 
 SRCS=src/main.c \
 	src/dlist/dlist.c \
-	src/hlib/hlib.c \
-	src/utils/util_read_file.c \
 	src/monty_error.c \
 	src/monty_execute.c \
 	src/monty_parse.c \

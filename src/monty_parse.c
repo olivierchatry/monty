@@ -1,37 +1,36 @@
 #include <stdlib.h>
-
+#include <string.h>
 #include "monty.h"
-#include "hlib/hlib.h"
 
-void monty_init(monty_t *monty) {
+static void monty_init(monty_t *monty) {
 	dlist_init(&monty->dlist);
 	monty->error = MONTY_OK;
 	monty->mode = MONTY_STACK; 
 	monty->line = 0;
 }
 
-void monty_free(monty_t *monty) {
+static void monty_free(monty_t *monty) {
 	dlist_free(&monty->dlist);
 }
 
-void monty_remove_comment(char* content) {
+static void monty_remove_comment(char* content) {
 	for (;*content && (*content != '#'); content++);
 	*content = 0;
 }
 
-int monty_parse(char* content) {
-	char		*save_ptr, *line;
+int monty_parse(FILE* file) {
+	char		*line;
 	int			status;
+	size_t	len = 0;
 	monty_t	monty;
 	
 	monty_init(&monty);
-	line = hstrtok_r(content, "\n", &save_ptr);
-	while (line && monty.error == MONTY_OK) {
+	while ((getline(&line, &len, file) != -1) && (monty.error == MONTY_OK)) {
 		monty.line++;
 		monty_remove_comment(line);
 		monty_execute(&monty, line);
-		line = hstrtok_r(NULL, "\n", &save_ptr);
 	}
+	free(line);
 	status = monty.error;
 	monty_error(&monty);
 	monty_free(&monty);

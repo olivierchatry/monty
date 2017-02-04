@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 
 void monty_error(monty_t* monty) {
 	switch (monty->error) {

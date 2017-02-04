@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "monty.h"
 
 void monty_instr_pint(monty_t *monty) {

@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "monty.h"
 
 void monty_instr_pall(monty_t *monty) {

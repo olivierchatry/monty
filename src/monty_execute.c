@@ -1,6 +1,6 @@
 #include <stdlib.h>
+#include <string.h>
 #include "monty.h"
-#include "hlib/hlib.h"
 
 static monty_instruction_t	g_monty_instructions[] = {
 	{"push", monty_instr_push},
@@ -26,9 +26,9 @@ static monty_instruction_t	g_monty_instructions[] = {
 void monty_execute(monty_t *monty, char *line) {
 	monty_instruction_t	*instr;
 	
-	monty->token = hstrtok_r(line, " \t", &monty->save_ptr);
+	monty->token = strtok_r(line, " \t\n", &monty->save_ptr);
 	if (monty->token) {
-		for (instr = g_monty_instructions; instr->opcode && hstrcmp(instr->opcode, monty->token); instr++);
+		for (instr = g_monty_instructions; instr->opcode && strcmp(instr->opcode, monty->token); instr++);
 		if (instr->fun) {
 			instr->fun(monty);
 		} else {

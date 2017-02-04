@@ -1,7 +1,4 @@
-#include <stdio.h>
 #include <stdlib.h>
-#include <hlib/hlib.h>
-#include <utils/utils.h>
 #include "monty.h"
 
 
@@ -11,10 +8,10 @@ int main(int ac, char** av) {
 	if (ac < 2) {
 		printf("USAGE: monty file\n");
 	} else {
-		char* monty = util_read_file(*(++av));
-		if (monty) {
-			exit_value = monty_parse(monty);
-			free(monty);
+		FILE*	file = fopen(av[1], "rt");
+		if (file) {
+			exit_value = monty_parse(file);
+			fclose(file);
 		} else {
 			printf("Error: Can't open file %s\n", *av);
 		}

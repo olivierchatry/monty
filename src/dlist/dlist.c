@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <hlib/hlib.h>
 #include "dlist.h"
 
 void		dlist_init(dlist_t* dlist) {
@@ -37,7 +36,7 @@ void		dlist_free(dlist_t *dlist) {
 void		dlist_push_tail(dlist_t *dlist, void *value) {
 	dlist_node_t	*new;
 	
-	new = (dlist_node_t*) hcalloc(sizeof(dlist_node_t));
+	new = (dlist_node_t*) calloc(sizeof(dlist_node_t), 1);
 	if (new) {
 		new->value = value;
 		if (dlist->tail) {
@@ -54,7 +53,7 @@ void		dlist_push_tail(dlist_t *dlist, void *value) {
 void		dlist_push_head(dlist_t *dlist, void *value) {
 	dlist_node_t	*new;
 	
-	new = (dlist_node_t*) hcalloc(sizeof(dlist_node_t));
+	new = (dlist_node_t*) calloc(sizeof(dlist_node_t), 1);
 	if (new) {
 		new->value = value;
 		if (dlist->head) {

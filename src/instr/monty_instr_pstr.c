@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "monty.h"
 
 void monty_instr_pstr(monty_t *monty) {
