@@ -7,4 +7,5 @@ void monty_instr_pall(monty_t *monty) {
 		v.ptr = node->value;
 		printf("%d\n", (int) v.value);
 	}
+	printf("--\n");
 }

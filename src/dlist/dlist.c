@@ -74,6 +74,7 @@ void		*dlist_pop_tail(dlist_t *dlist) {
 		dlist_node_t	*prev;
 
 		prev = dlist->tail->prev;
+		prev->next = NULL;
 		value = dlist->tail->value;
 		free(dlist->tail);
 		dlist->tail = prev;
@@ -94,6 +95,7 @@ void		*dlist_pop_head(dlist_t *dlist) {
 		value = dlist->head->value;
 		free(dlist->head);
 		dlist->head = next;
+		dlist->head->prev = NULL;
 		dlist->count--;
 	}
 	if (dlist->head == NULL) {
