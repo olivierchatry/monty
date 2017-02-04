@@ -3,6 +3,8 @@
 
 #include "dlist/dlist.h"
 
+#define UNUSED(x) (void)x
+
 #define MONTY_OK 0
 #define MONTY_ERROR 1
 #define MONTY_ERROR_INVALID_OPCODE 1
