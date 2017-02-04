@@ -10,6 +10,12 @@ void monty_instr_push(monty_t *monty) {
 	else if (!hisnumber(value)) {
 		monty->error = MONTY_ERROR_PUSH_INVALID_ARG;
 	} else {
-		monty_push(monty, hatoi(value));
+		monty_value_t v;
+		v.value = hatoi(value);
+		if (monty->mode == MONTY_STACK) {
+			dlist_push_head(&(monty->dlist), v.ptr);
+		} else {
+			dlist_push_tail(&(monty->dlist), v.ptr);
+		}
 	}
 }

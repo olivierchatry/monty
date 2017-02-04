@@ -47,9 +47,7 @@ typedef struct monty_instruction_s monty_instruction_t;
 
 int		monty_parse(char* content);
 int		monty_pop(monty_t *monty);
-int		monty_peek(monty_t *monty);
 void	monty_error(monty_t* monty);
-void	monty_push(monty_t *monty, int value);
 void	monty_init(monty_t *monty);
 void	monty_free(monty_t *monty);
 void	monty_execute(monty_t *monty, char *line);
