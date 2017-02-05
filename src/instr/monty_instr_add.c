@@ -7,7 +7,7 @@ void monty_instr_add(monty_t *monty) {
 		dlist_value_t v;
 		
 		v.as_int = dlist_pop_head(monty->dl).as_int;
-		v.as_int += dlist_pop_head(monty->dl).as_int;
+		v.as_int = v.as_int + dlist_pop_head(monty->dl).as_int;
 		dlist_push_head(monty->dl, v);
 	}
 }
