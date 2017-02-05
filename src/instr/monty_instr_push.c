@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
-#include "monty.h"
+#include "../monty.h"
 
 static int	isnumber(const char *str) {
 	int not;
@@ -19,12 +19,12 @@ void monty_instr_push(monty_t *monty) {
 	else if (!isnumber(value)) {
 		monty->error = MONTY_ERROR_PUSH_INVALID_ARG;
 	} else {
-		monty_value_t v;
-		v.value = atoi(value);
+		dlist_value_t v;
+		v.as_int = atoi(value);
 		if (monty->mode == MONTY_STACK) {
-			dlist_push_head(&(monty->dlist), v.ptr);
+			dlist_push_head(monty->dl, v);
 		} else {
-			dlist_push_tail(&(monty->dlist), v.ptr);
+			dlist_push_tail(monty->dl, v);
 		}
 	}
 }

@@ -33,7 +33,7 @@ void		dlist_free(dlist_t *dlist) {
 	dlist_init(dlist);
 }
 
-void		dlist_push_tail(dlist_t *dlist, void *value) {
+void		dlist_push_tail(dlist_t *dlist, dlist_value_t value) {
 	dlist_node_t	*new;
 	
 	new = (dlist_node_t*) calloc(sizeof(dlist_node_t), 1);
@@ -50,7 +50,7 @@ void		dlist_push_tail(dlist_t *dlist, void *value) {
 	}
 }
 
-void		dlist_push_head(dlist_t *dlist, void *value) {
+void		dlist_push_head(dlist_t *dlist, dlist_value_t value) {
 	dlist_node_t	*new;
 	
 	new = (dlist_node_t*) calloc(sizeof(dlist_node_t), 1);
@@ -67,8 +67,10 @@ void		dlist_push_head(dlist_t *dlist, void *value) {
 	}
 }
 
-void		*dlist_pop_tail(dlist_t *dlist) {
-	void	*value = NULL;
+dlist_value_t dlist_pop_tail(dlist_t *dlist) {
+	dlist_value_t value;
+
+	value.as_ptr = NULL;
 	if (dlist->tail) {
 		dlist_node_t	*prev;
 
@@ -86,8 +88,10 @@ void		*dlist_pop_tail(dlist_t *dlist) {
 	return value;
 }
 
-void		*dlist_pop_head(dlist_t *dlist) {
-	void	*value = NULL;
+dlist_value_t dlist_pop_head(dlist_t *dlist) {
+	dlist_value_t value;
+
+	value.as_ptr = NULL;
 	if (dlist->head) {
 		dlist_node_t	*next;
 

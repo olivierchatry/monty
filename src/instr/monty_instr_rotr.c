@@ -1,9 +1,9 @@
-#include "monty.h"
+#include "../monty.h"
 
 void monty_instr_rotr(monty_t *monty) {
-	if (monty->dlist.count > 0) {
-		monty_value_t v; 
-		v.ptr = dlist_pop_tail(&monty->dlist);
-		dlist_push_head(&monty->dlist, v.ptr);
+	if (monty->dl->count > 0) {
+		dlist_value_t v; 
+		v = dlist_pop_tail(monty->dl);
+		dlist_push_head(monty->dl, v);
 	}
 }

@@ -3,22 +3,24 @@
 #include "monty.h"
 
 static void monty_init(monty_t *monty) {
-	dlist_init(&monty->dlist);
+	monty->dl = calloc(sizeof(dlist_t), 1);
+	dlist_init(monty->dl);
 	monty->error = MONTY_OK;
 	monty->mode = MONTY_STACK; 
 	monty->line = 0;
 }
 
 static void monty_free(monty_t *monty) {
-	dlist_free(&monty->dlist);
+	dlist_free(monty->dl);
+	free(monty->dl);
 }
 
-static void monty_remove_comment(char* content) {
+static void monty_remove_comment(char *content) {
 	for (;*content && (*content != '#'); content++);
 	*content = 0;
 }
 
-int monty_parse(FILE* file) {
+int monty_parse(FILE *file) {
 	char		*line;
 	int			status;
 	size_t	len = 0;

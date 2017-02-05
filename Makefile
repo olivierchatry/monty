@@ -6,7 +6,6 @@ SRCS=src/main.c \
 	src/monty_error.c \
 	src/monty_execute.c \
 	src/monty_parse.c \
-	src/monty_pop.c \
 	src/instr/monty_instr_pall.c \
 	src/instr/monty_instr_pop.c \
 	src/instr/monty_instr_push.c \

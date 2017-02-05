@@ -1,12 +1,13 @@
-#include "monty.h"
+#include "../monty.h"
 
 void monty_instr_add(monty_t *monty) {
-	if (monty->dlist.count < 2) {
+	if (monty->dl->count < 2) {
 		monty->error = MONTY_ERROR_TO_SHORT;
 	} else {
-		monty_value_t v;
+		dlist_value_t v;
 		
-		v.value = monty_pop(monty) + monty_pop(monty);
-		dlist_push_head(&(monty->dlist), v.ptr);
+		v.as_int = dlist_pop_head(monty->dl).as_int;
+		v.as_int += dlist_pop_head(monty->dl).as_int;
+		dlist_push_head(monty->dl, v);
 	}
 }
