@@ -50,16 +50,19 @@ The opcode `pint` prints the value at the top of the stack, followed by a new li
 
 * Usage: `pint`
 * If the stack is empty, print `L<line_number>: can't pint, stack empty`, followed by a new line, and exit with the status `EXIT_FAILURE`
+
 #### pop
 The opcode `pop` removes the top element of the stack.
 
 * Usage: `pop`
 * if the stack is empty, print `L<line_number>: can't pop an empty stack`, followed by a new line, and exit with the status `EXIT_FAILURE`
+
 #### swap
 The opcode `swap` swaps the top two elements of the stack.
 
 * Usage: `swap`
 * If the stack is less than two element long, print `L<line_number>: can't swap, stack too short`, followed by a new line, and exit with the status `EXIT_FAILURE`
+
 #### add
 The opcode `add` adds the top two elements of the stack.
 
@@ -68,6 +71,7 @@ The opcode `add` adds the top two elements of the stack.
 * The result is stored in the second top element of the stack, and the top element is removed, so that at the end:
 	* the top element of the stack contains the result
 	* the stack is one element shorter
+
 #### nop
 The opcode `nop` doesn't do anything.
 
@@ -81,6 +85,7 @@ Usage: `sub`
 * The result is stored in the second top element of the stack, and the top element is removed, so that at the end:
 	* the top element of the stack contains the result
 	* the stack is one element shorter
+
 #### div
 The opcode `div` divides the second top element of the stack by the top element of the stack.
 
@@ -90,6 +95,7 @@ Usage: `div`
 	* the top element of the stack contains the result
 	* the stack is one element shorter
 * If the top element of the stack is `0`, print `L<line_number>: division by zero`, followed by a new line, and exit with the status `EXIT_FAILURE`
+
 #### mul
 The opcode `mul` multiplies the second top element of the stack with the top element of the stack.
 
@@ -98,6 +104,7 @@ Usage: `mul`
 * The result is stored in the second top element of the stack, and the top element is removed, so that at the end:
 	* the top element of the stack contains the result
 	* the stack is one element shorter
+
 #### mod
 The opcode `mod` computes the rest of the division of the second top element of the stack by the top element of the stack.
 
