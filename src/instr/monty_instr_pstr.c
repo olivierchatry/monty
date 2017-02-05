@@ -2,11 +2,11 @@
 
 void monty_instr_pstr(monty_t *monty) {
 	int valid = 1;
-	while (monty->dl->count != 0 && valid) {
-		int val = dlist_pop_head(monty->dl).as_int;
-		valid = val > 0 && val <= 127; 
+	for (dlist_node_t* node = monty->dl->head; (node != NULL) && valid; node = node->next) {
+		dlist_value_t val = node->value;
+		valid = val.as_int > 0 && val.as_int <= 127; 
 		if (valid) {
-			printf("%c", val);
+			printf("%c", val.as_int);
 		}
 	}
 	printf("\n");
