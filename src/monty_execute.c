@@ -20,6 +20,7 @@ static monty_instruction_t	g_monty_instructions[] = {
 	{"rotr", monty_instr_rotr},
 	{"queue", monty_instr_queue},
 	{"stack", monty_instr_stack},
+	{"clear", monty_instr_clear},
 	{NULL, NULL}
 };
 

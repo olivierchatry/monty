@@ -22,7 +22,8 @@ SRCS=src/main.c \
 	src/instr/monty_instr_rotl.c \
 	src/instr/monty_instr_rotr.c \
 	src/instr/monty_instr_queue.c \
-	src/instr/monty_instr_stack.c
+	src/instr/monty_instr_stack.c \
+	src/instr/monty_instr_clear.c
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 DEPS=$(OBJS:%.o=%.d)

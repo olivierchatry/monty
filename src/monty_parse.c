@@ -27,14 +27,14 @@ int monty_parse(FILE *file) {
 	monty_t	monty;
 	
 	monty_init(&monty);
-	while ((getline(&line, &len, file) != -1) && (monty.error == MONTY_OK)) {
+	while ((monty.error == MONTY_OK) && (getline(&line, &len, file) != -1)) {
 		monty.line++;
 		monty_remove_comment(line);
 		monty_execute(&monty, line);
 	}
-	free(line);
 	status = monty.error;
 	monty_error(&monty);
 	monty_free(&monty);
+	free(line);
 	return status == MONTY_OK ? EXIT_SUCCESS : EXIT_FAILURE;
 }
