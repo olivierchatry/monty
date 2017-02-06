@@ -9,14 +9,16 @@ void		dlist_init(dlist_t* dlist) {
 
 void		dlist_apply_tail_to_head(dlist_t *dlist, dlist_fct_t fct) {
 	dlist_node_t* node = dlist->tail;
+	
 	while(node) {
 		fct(node->value);
-		node = node->next;
+		node = node->prev;
 	}	
 }
 
 void		dlist_apply_head_to_tail(dlist_t *dlist, dlist_fct_t fct) {
-	dlist_node_t* node = dlist->tail;
+	dlist_node_t* node = dlist->head;
+	
 	while(node) {
 		fct(node->value);
 		node = node->next;
@@ -25,8 +27,10 @@ void		dlist_apply_head_to_tail(dlist_t *dlist, dlist_fct_t fct) {
 
 void		dlist_free(dlist_t *dlist) {
 	dlist_node_t	*node = dlist->head;
+
 	while(node) {
 		dlist_node_t	*current = node;
+
 		node = node->next;
 		free(current);
 	}
