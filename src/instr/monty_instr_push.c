@@ -20,6 +20,7 @@ void monty_instr_push(monty_t *monty) {
 		monty->error = MONTY_ERROR_PUSH_INVALID_ARG;
 	} else {
 		dlist_value_t v;
+		
 		v.as_int = atoi(value);
 		if (monty->mode == MONTY_STACK) {
 			dlist_push_head(monty->dl, v);
