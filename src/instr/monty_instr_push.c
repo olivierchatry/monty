@@ -4,6 +4,7 @@
 
 static int	isnumber(const char *str) {
 	int not;
+	
 	for (not = 1;*str && not; ++str) {
 		not = (*str - '0');
 		not = (not >= 0) && (not <= 9);
@@ -13,7 +14,7 @@ static int	isnumber(const char *str) {
 
 void monty_instr_push(monty_t *monty) {
 	char	*value = strtok_r(NULL, " \t\n", &monty->save_ptr);
-	
+
 	if (!value) {
 		monty->error = MONTY_ERROR_PUSH_MISSING_ARG;
 	} else if (!isnumber(value)) {
