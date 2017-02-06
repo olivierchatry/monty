@@ -13,14 +13,14 @@ static int	isnumber(const char *str) {
 
 void monty_instr_push(monty_t *monty) {
 	char	*value = strtok_r(NULL, " \t\n", &monty->save_ptr);
+	
 	if (!value) {
 		monty->error = MONTY_ERROR_PUSH_MISSING_ARG;
-	} 
-	else if (!isnumber(value)) {
+	} else if (!isnumber(value)) {
 		monty->error = MONTY_ERROR_PUSH_INVALID_ARG;
 	} else {
 		dlist_value_t v;
-		
+
 		v.as_int = atoi(value);
 		if (monty->mode == MONTY_STACK) {
 			dlist_push_head(monty->dl, v);
