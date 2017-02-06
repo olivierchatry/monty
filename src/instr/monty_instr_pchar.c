@@ -5,6 +5,7 @@ void monty_instr_pchar(monty_t *monty) {
 		monty->error = MONTY_ERROR_PCHAR_EMPTY;
 	} else {
 		int v = monty->dl->head->value.as_int;
+		
 		if (v >= 0 && v <= 127) {
 			printf("%c\n", v);
 		} else {
