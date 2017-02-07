@@ -5,7 +5,7 @@
 static void monty_init(monty_t *monty) {
 	monty->dl = calloc(sizeof(dlist_t), 1);
 	dlist_init(monty->dl);
-	monty->error = MONTY_OK;
+	monty->error = MONTY_ERROR_NONE;
 	monty->mode = MONTY_STACK; 
 	monty->line = 0;
 }
@@ -27,7 +27,7 @@ int monty_parse(FILE *file) {
 	monty_t	monty;
 	
 	monty_init(&monty);
-	while ((monty.error == MONTY_OK) && (getline(&line, &len, file) != -1)) {
+	while ((monty.error == MONTY_ERROR_NONE) && (getline(&line, &len, file) != -1)) {
 		monty.line++;
 		monty_remove_comment(line);
 		monty_execute(&monty, line);

@@ -6,8 +6,8 @@
 
 #define UNUSED(x) (void)x
 
-#define MONTY_OK 0
-#define MONTY_ERROR 1
+#define MONTY_ERROR_NONE 0
+
 #define MONTY_ERROR_INVALID_OPCODE 1
 #define MONTY_ERROR_PUSH_MISSING_ARG 2
 #define MONTY_ERROR_PUSH_INVALID_ARG 3

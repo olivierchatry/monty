@@ -2,7 +2,7 @@
 
 void monty_error(monty_t *monty) {
 	switch (monty->error) {
-		case MONTY_OK:
+		case MONTY_ERROR_NONE:
 			break;
 		case MONTY_ERROR_INVALID_OPCODE:
 			printf("L%d: unknow instruction %s\n", monty->line, monty->token);

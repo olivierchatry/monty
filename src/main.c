@@ -13,7 +13,7 @@ int main(int ac, char** av) {
 		FILE*	file = strcmp(av[1], "stdin") == 0 ? stdin : fopen(av[1], "rt");
 
 		if (file) {
-			exit_value = (monty_parse(file) == MONTY_OK) ? EXIT_SUCCESS : EXIT_FAILURE;
+			exit_value = (monty_parse(file) == MONTY_ERROR_NONE) ? EXIT_SUCCESS : EXIT_FAILURE;
 			fclose(file);
 		} else {
 			printf("Error: Can't open file %s\n", *av);
