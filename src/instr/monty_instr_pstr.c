@@ -1,15 +1,17 @@
 #include "../monty.h"
 
-void monty_instr_pstr(monty_t *monty) {
-	int valid = 1;
-	
-	for (dlist_node_t* node = monty->dl->head; (node != NULL) && valid; node = node->next) {
-		dlist_value_t val = node->value;
-		
-		valid = val.as_int > 0 && val.as_int <= 127; 
-		if (valid) {
-			printf("%c", val.as_int);
-		}
+
+static int monty_print_elem(void *user_data, dlist_value_t value) {
+	UNUSED(user_data);
+	int valid = value.as_int > 0 && value.as_int <= 127; 
+	if (valid) {
+		printf("%c", value.as_int);
+		return DLIST_CONTINUE;
 	}
+	return DLIST_STOP;
+}
+
+void monty_instr_pstr(monty_t *monty) {
+	dlist_apply_head_to_tail(monty->dl, NULL, monty_print_elem);
 	printf("\n");
 }
