@@ -3,8 +3,7 @@
 
 static int monty_print_elem(void *user_data, dlist_value_t value) {
 	UNUSED(user_data);
-	int valid = value.as_int > 0 && value.as_int <= 127; 
-	if (valid) {
+	if ( (value.as_int > 0) && (value.as_int <= 127) ) {
 		printf("%c", value.as_int);
 		return DLIST_CONTINUE;
 	}
