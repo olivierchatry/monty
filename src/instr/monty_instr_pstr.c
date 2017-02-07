@@ -10,7 +10,8 @@ static int monty_print_elem(void *user_data, dlist_value_t value) {
 	return DLIST_STOP;
 }
 
-void monty_instr_pstr(monty_t *monty) {
+int	monty_instr_pstr(monty_t *monty) {
 	dlist_apply_head_to_tail(monty->dl, NULL, monty_print_elem);
 	printf("\n");
+	return MONTY_ERROR_NONE;
 }

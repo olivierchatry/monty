@@ -24,16 +24,18 @@ static monty_instruction_t	g_monty_instructions[] = {
 	{NULL, NULL}
 };
 
-void monty_execute(monty_t *monty, char *line) {
+int	monty_execute(monty_t *monty, char *line) {
 	monty_instruction_t	*instr;
-	
+	int									error = MONTY_ERROR_NONE;
+
 	monty->token = strtok_r(line, " \t\n", &monty->save_ptr);
 	if (monty->token) {
 		for (instr = g_monty_instructions; instr->opcode && strcmp(instr->opcode, monty->token); instr++);
 		if (instr->fun) {
-			instr->fun(monty);
+			error = instr->fun(monty);
 		} else {
-			monty->error = MONTY_ERROR_INVALID_OPCODE;
+			error = MONTY_ERROR_INVALID_OPCODE;
 		}
 	}
+	return error;
 }

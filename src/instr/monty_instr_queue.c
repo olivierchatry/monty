@@ -1,5 +1,6 @@
 #include "../monty.h"
 
-void monty_instr_queue(monty_t *monty) {
+int monty_instr_queue(monty_t *monty) {
 	monty->mode = MONTY_QUEUE;
+	return MONTY_ERROR_NONE;
 }

@@ -1,7 +1,7 @@
 #include "monty.h"
 
-void monty_error(monty_t *monty) {
-	switch (monty->error) {
+void monty_error(monty_t *monty, int error) {
+	switch (error) {
 		case MONTY_ERROR_NONE:
 			break;
 		case MONTY_ERROR_INVALID_OPCODE:

@@ -12,21 +12,21 @@ static int	isnumber(const char *str) {
 	return ok;
 }
 
-void monty_instr_push(monty_t *monty) {
-	char	*value = strtok_r(NULL, " \t\n", &monty->save_ptr);
+int	monty_instr_push(monty_t *monty) {
+	char					*value = strtok_r(NULL, " \t\n", &monty->save_ptr);
+	dlist_value_t v;
 
 	if (!value) {
-		monty->error = MONTY_ERROR_PUSH_MISSING_ARG;
-	} else if (!isnumber(value)) {
-		monty->error = MONTY_ERROR_PUSH_INVALID_ARG;
-	} else {
-		dlist_value_t v;
-
-		v.as_int = atoi(value);
-		if (monty->mode == MONTY_STACK) {
-			dlist_push_head(monty->dl, v);
-		} else {
-			dlist_push_tail(monty->dl, v);
-		}
+		return MONTY_ERROR_PUSH_MISSING_ARG;
+	} 
+	if (!isnumber(value)) {
+		return MONTY_ERROR_PUSH_INVALID_ARG;
 	}
+	v.as_int = atoi(value);
+	if (monty->mode == MONTY_STACK) {
+		dlist_push_head(monty->dl, v);
+	} else {
+		dlist_push_tail(monty->dl, v);
+	}
+	return MONTY_ERROR_NONE;
 }
