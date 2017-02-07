@@ -36,5 +36,5 @@ int monty_parse(FILE *file) {
 	monty_error(&monty);
 	monty_free(&monty);
 	free(line);
-	return status == MONTY_OK ? EXIT_SUCCESS : EXIT_FAILURE;
+	return status;
 }
