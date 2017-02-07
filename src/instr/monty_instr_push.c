@@ -7,8 +7,7 @@ static int	isnumber(const char *str) {
 		
 	for (not = 1;*str && not; ++str) {
 		char c = *str;
-		not = (c - '0');
-		not = ((not >= 0) && (not <= 9)) || (c == '+') || (c == '-');
+		not = ((c >= '0') && (c <= '9')) || (c == '+') || (c == '-');
 	}
 	return not;
 }
