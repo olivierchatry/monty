@@ -1,6 +1,6 @@
 #include "monty.h"
 
-void monty_error(monty_t* monty) {
+void monty_error(monty_t *monty) {
 	switch (monty->error) {
 		case MONTY_OK:
 			break;

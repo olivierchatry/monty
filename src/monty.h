@@ -40,7 +40,7 @@ struct monty_instruction_s {
 typedef struct monty_instruction_s monty_instruction_t;
 
 int		monty_parse(FILE *file);
-void	monty_error(monty_t* monty);
+void	monty_error(monty_t *monty);
 void	monty_execute(monty_t *monty, char *line);
 
 void	monty_instr_push(monty_t *monty);
