@@ -1,6 +1,9 @@
 #ifndef __DLIST_H__
 #define __DLIST_H__
 
+#define DLIST_CONTINUE	1
+#define DLIST_STOP			0
+
 union dlist_value_u {
 	int		as_int;
 	void	*as_ptr;
@@ -24,11 +27,11 @@ struct dlist_s {
 
 typedef struct dlist_s dlist_t;
 
-typedef void(*dlist_fct_t)(dlist_value_t);
+typedef int(*dlist_fct_t)(void *user_data, dlist_value_t value);
 
 void		dlist_init(dlist_t *dlist);
-void		dlist_apply_head_to_tail(dlist_t *dlist, dlist_fct_t fct);
-void		dlist_apply_tail_to_head(dlist_t *dlist, dlist_fct_t fct);
+void		dlist_apply_head_to_tail(dlist_t *dlist, void *user_data, dlist_fct_t fct);
+void		dlist_apply_tail_to_head(dlist_t *dlist, void *user_data, dlist_fct_t fct);
 void		dlist_free(dlist_t *dlist);
 void		dlist_push_tail(dlist_t *dlist, dlist_value_t value);
 void		dlist_push_head(dlist_t *dlist, dlist_value_t value);

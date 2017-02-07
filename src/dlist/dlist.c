@@ -7,21 +7,27 @@ void		dlist_init(dlist_t* dlist) {
 	dlist->tail = NULL;
 }
 
-void		dlist_apply_tail_to_head(dlist_t *dlist, dlist_fct_t fct) {
+void		dlist_apply_tail_to_head(dlist_t *dlist, void *user_data, dlist_fct_t fct) {
 	dlist_node_t* node = dlist->tail;
 	
 	while(node) {
-		fct(node->value);
-		node = node->prev;
+		if (fct(user_data, node->value) == DLIST_CONTINUE) {
+			node = node->prev;
+		}	else {
+			node = NULL;
+		}
 	}	
 }
 
-void		dlist_apply_head_to_tail(dlist_t *dlist, dlist_fct_t fct) {
+void		dlist_apply_head_to_tail(dlist_t *dlist, void *user_data, dlist_fct_t fct) {
 	dlist_node_t* node = dlist->head;
 	
 	while(node) {
-		fct(node->value);
-		node = node->next;
+		if (fct(user_data, node->value) == DLIST_CONTINUE) {
+			node = node->next;
+		}	else {
+			node = NULL;
+		}
 	}	
 }
 
