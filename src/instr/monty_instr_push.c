@@ -3,13 +3,13 @@
 #include "../monty.h"
 
 static int	isnumber(const char *str) {
-	int not;
+	int ok;
 		
-	for (not = 1;*str && not; ++str) {
+	for (ok = 1;*str && ok; ++str) {
 		char c = *str;
-		not = ((c >= '0') && (c <= '9')) || (c == '+') || (c == '-');
+		ok = ((c >= '0') && (c <= '9')) || (c == '+') || (c == '-');
 	}
-	return not;
+	return ok;
 }
 
 void monty_instr_push(monty_t *monty) {
