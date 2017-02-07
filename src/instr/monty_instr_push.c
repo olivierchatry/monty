@@ -4,10 +4,11 @@
 
 static int	isnumber(const char *str) {
 	int not;
-	
+		
 	for (not = 1;*str && not; ++str) {
-		not = (*str - '0');
-		not = (not >= 0) && (not <= 9);
+		char c = *str;
+		not = (c - '0');
+		not = ((not >= 0) && (not <= 9)) || (c == '+') || (c == '-');
 	}
 	return not;
 }
