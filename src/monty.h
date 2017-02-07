@@ -61,4 +61,5 @@ void	monty_instr_rotr(monty_t *monty);
 void	monty_instr_stack(monty_t *monty);
 void	monty_instr_queue(monty_t *monty);
 void	monty_instr_clear(monty_t *monty);
+
 #endif
