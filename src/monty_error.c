@@ -28,6 +28,6 @@ void monty_error(monty_t *monty) {
 			printf("L%d: can't pchar, value out of range\n", monty->line);
 			break;		
 		default:
-			printf("L%d: unknow error\n", monty->line);
+			printf("L%d: unknown error\n", monty->line);
 	}
 }
